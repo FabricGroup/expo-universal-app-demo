@@ -5,8 +5,10 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Button } from 'tamagui';
+import { useSampleStore } from '../../hooks/useSampleStore';
 
 export default function HomeScreen() {
+  const { stage, moveTo } = useSampleStore();
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -46,7 +48,13 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
-        <Button theme="blue">Testing TamaGui</Button>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step Demo: Additional stuf</ThemedText>
+        <ThemedText>
+          Current State: {stage}
+        </ThemedText>
+        <Button theme="blue" onTouchEnd={() => moveTo('pending')}>Testing TamaGui</Button>
       </ThemedView>
     </ParallaxScrollView>
   );
