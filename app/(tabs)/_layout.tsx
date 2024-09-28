@@ -15,7 +15,7 @@ export default function TabLayout() {
         headerShown: false,
       }}>
       <Tabs.Screen
-        name="accounts"
+        name="(accounts)"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
@@ -24,21 +24,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="atm-finder"
         options={{
-          title: 'Account Settings',
+          title: 'ATM Finder',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
+            <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="experiment"
-        options={{
-          title: 'Experiment',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
-          ),
+          headerShown: true
         }}
       />
     </Tabs>

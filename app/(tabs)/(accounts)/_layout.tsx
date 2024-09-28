@@ -7,5 +7,6 @@ export default function AccountsLayout() {
     }
   }}>
     <Stack.Screen name="index" options={{ title: "Accounts" }} />
+    <Stack.Screen name="account-details" options={{ title: "Account details" }} />
   </Stack>
 }
