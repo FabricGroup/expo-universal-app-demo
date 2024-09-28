@@ -1,9 +1,6 @@
 import { ExternalLink } from "@tamagui/lucide-icons";
 import { Anchor, H2, Paragraph, XStack, YStack } from "tamagui";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function ExperimentScreen() {
   const insets = useSafeAreaInsets();
