@@ -25,6 +25,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="pay"
+        options={{
+          title: 'Pay',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'qr-code' : 'qr-code-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="atm-finder"
         options={{
           title: 'ATM Finder',
