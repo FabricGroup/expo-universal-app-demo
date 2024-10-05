@@ -1,4 +1,4 @@
-import { H3, Paragraph, View } from "tamagui";
+import { H3, Paragraph, View, Spinner, YStack } from "tamagui";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Dimensions, Alert } from "react-native";
 import MapView, { Marker, Region } from "react-native-maps";
@@ -32,7 +32,12 @@ export function AtmFinder() {
     })();
   }, []);
 
-  if (!location) return <Paragraph>Loading...</Paragraph>;
+  if (!location)
+    return (
+      <YStack height="$10" alignItems="center">
+        <Spinner color="$blue11" size="large" />
+      </YStack>
+    );
 
   return (
     <View>
@@ -45,7 +50,10 @@ export function AtmFinder() {
         {randomPoints.map((point, index) => (
           <Marker
             key={index}
-            coordinate={{ latitude: point.latitude, longitude: point.longitude }}
+            coordinate={{
+              latitude: point.latitude,
+              longitude: point.longitude,
+            }}
             title={`ATM ${index + 1}`}
           />
         ))}
