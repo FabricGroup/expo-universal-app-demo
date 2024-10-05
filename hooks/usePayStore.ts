@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 type PayStore = {
-  payId: string | null;
+  payId: string;
 } & {
   setPayId: (payId: string) => void;
 };
 
 export const usePayStore = create<PayStore>((set) => ({
-  payId: null,
+  payId: '',
   setPayId(payId: string) {
     set({ payId });
   },

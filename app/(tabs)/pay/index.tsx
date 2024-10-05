@@ -1,15 +1,14 @@
-import { H3, Paragraph } from "tamagui";
+import { H3, Paragraph, YStack } from "tamagui";
 import { Platform } from "react-native";
 import { Link } from "expo-router";
-import { Button } from "tamagui";
+import { Button, Input, Form, XStack, Label } from "tamagui";
 import { usePayStore } from "../../../hooks/usePayStore";
+import { StandardScreen } from "../../../components/StandardScreen";
 
 export default function PayScreen() {
-  const { payId} = usePayStore();
+  const { payId, setPayId } = usePayStore();
   return (
-    <>
-      <H3>Pay your bills here</H3>
-
+    <StandardScreen>
       {Platform.OS !== "web" && (
         <Link href="/pay/qr" asChild>
           <Button size="$4" theme="blue" style={{ textDecoration: "none" }}>
@@ -18,7 +17,19 @@ export default function PayScreen() {
         </Link>
       )}
 
-      <Paragraph>Paying to PayId: {payId}</Paragraph>
-    </>
+      <Form>
+        <XStack alignItems="center" space="$4">
+          <Label width={90} htmlFor="name">
+            Name
+          </Label>
+          <Input
+            flex={1}
+            placeholder="PayId"
+            value={payId}
+            onChangeText={setPayId}
+          />
+        </XStack>
+      </Form>
+    </StandardScreen>
   );
 }
