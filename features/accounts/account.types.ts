@@ -5,6 +5,7 @@ export type Account = {
 }
 
 export type Transaction = {
+  id: string;
   date: Date;
   amount: number;
   description: string;

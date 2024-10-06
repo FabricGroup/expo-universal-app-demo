@@ -1,7 +1,6 @@
+import { Card, CardProps, H3, Paragraph, YStack } from "tamagui";
 import { toDollars } from "../utils/formats";
 import { Account } from "./account.types";
-import { Button, Card, CardProps, H3, Paragraph, YStack } from "tamagui";
-import { MoveRight, CircleEllipsis } from "@tamagui/lucide-icons";
 
 type AccountCardProps = {
   account: Account;
@@ -11,7 +10,8 @@ export function AccountCard({ account, ...otherProps }: AccountCardProps) {
   return (
     <Card
       elevate
-      pressStyle={{ backgroundColor: "$backgroundHover" }}
+      pressStyle={{ backgroundColor: "$purple5Light" }}
+      backgroundColor="$purple4Light"
       {...otherProps}
     >
       <Card.Header padded fd="row" jc="space-between">
