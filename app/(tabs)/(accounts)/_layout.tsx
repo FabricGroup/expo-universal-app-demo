@@ -1,12 +1,16 @@
-import { Stack } from 'expo-router';
+// import { Stack } from 'expo-router';
 
-export default function AccountsLayout() {
-  return <Stack screenOptions={{
-    headerStyle: {
+// export default function AccountsLayout() {
+//   return <Stack screenOptions={{
+//     headerStyle: {
+//     }
+//   }}>
+//     <Stack.Screen name="index" options={{ title: "Accounts", headerShown: false  }} />
+//     <Stack.Screen name="account-details" options={{ title: "Account details" }} />
+//   </Stack>
+// }
+import { Stack } from 'expo-router/stack';
 
-    }
-  }}>
-    <Stack.Screen name="index" options={{ title: "Accounts" }} />
-    <Stack.Screen name="account-details" options={{ title: "Account details" }} />
-  </Stack>
+export default function Layout() {
+  return <Stack />;
 }

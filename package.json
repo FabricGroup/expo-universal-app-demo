@@ -21,6 +21,8 @@
     "@tamagui/config": "1.111.11",
     "@tamagui/lucide-icons": "1.111.11",
     "expo": "~51.0.28",
+    "expo-barcode-scanner": "^13.0.1",
+    "expo-camera": "^15.0.16",
     "expo-constants": "~16.0.2",
     "expo-font": "~12.0.9",
     "expo-linking": "~6.3.1",
