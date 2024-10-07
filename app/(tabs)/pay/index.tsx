@@ -1,14 +1,12 @@
-import { H3, Paragraph, YStack } from "tamagui";
-import { Platform } from "react-native";
 import { Link } from "expo-router";
-import { Button, Input, Form, XStack, Label } from "tamagui";
-import { usePayStore } from "../../../hooks/usePayStore";
+import { Button, Form, Input, Label, XStack } from "tamagui";
 import { StandardScreen } from "../../../components/StandardScreen";
+import { usePayStore } from "../../../hooks/usePayStore";
 
 export default function PayScreen() {
   const { payId, setPayId } = usePayStore();
   return (
-    <StandardScreen>
+    <StandardScreen minHeight="100%">
       <Link href="/pay/qr" asChild>
         <Button size="$4" theme="blue" style={{ textDecoration: "none" }}>
           Scan and Pay

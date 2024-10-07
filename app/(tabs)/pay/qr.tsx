@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text, YStack } from "tamagui";
 import { usePayStore } from "../../../hooks/usePayStore";
+import { ScreenMessage } from "../../../components/ScreenMessage";
+import { ScreenLoader } from "../../../components/ScreenLoader";
 
 export default function QRCodeScanner() {
   const { setPayId } = usePayStore();
@@ -17,16 +19,18 @@ export default function QRCodeScanner() {
     })();
   }, []);
 
-  const handleBarCodeScanned = (result: Pick<BarcodeScanningResult, 'data'>) => {
+  const handleBarCodeScanned = (
+    result: Pick<BarcodeScanningResult, "data">
+  ) => {
     setPayId(result.data);
     router.back();
   };
 
   if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
+    return <ScreenLoader />;
   }
   if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+    return <ScreenMessage error>No access to camera</ScreenMessage>;
   }
 
   return (
@@ -37,12 +41,10 @@ export default function QRCodeScanner() {
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
         }}
-
         //@ts-expect-error: expo internally uses legacy cameraview for web, so need to use these props
         barCodeScannerSettings={{
           barCodeTypes: ["qr"],
         }}
-
         //@ts-expect-error: expo internally uses legacy cameraview for web, so need to use these props
         onBarCodeScanned={(data) => {
           handleBarCodeScanned({ data: data.nativeEvent.data });

@@ -1,19 +1,21 @@
-import { H3, Paragraph, View, Spinner, YStack } from "tamagui";
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Dimensions, Alert } from "react-native";
-import MapView, { Marker, Region } from "react-native-maps";
 import * as Location from "expo-location";
+import React, { useEffect, useState } from "react";
+import MapView, { Marker, Region } from "react-native-maps";
+import { H4, H5, Spinner, View, YStack } from "tamagui";
+import { ScreenLoader } from "../ScreenLoader";
+import { ScreenMessage } from "../ScreenMessage";
+import { StandardScreen } from "../StandardScreen";
 
 export function AtmFinder() {
   const [location, setLocation] = useState<Region | null>(null);
   const [randomPoints, setRandomPoints] = useState<Point[]>([]);
+  const [noLocPermissions, setNoLocPermissions] = useState(false);
 
   useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        Alert.alert("Permission to access location was denied");
-        return;
+        setNoLocPermissions(true);
       }
 
       const currentLocation = await Location.getCurrentPositionAsync({});
@@ -32,17 +34,17 @@ export function AtmFinder() {
     })();
   }, []);
 
-  if (!location)
-    return (
-      <YStack height="$10" alignItems="center">
-        <Spinner color="$blue11" size="large" />
-      </YStack>
-    );
+  if (noLocPermissions) {
+    return <ScreenMessage error>No location permissions</ScreenMessage>;
+  }
+
+  if (!location) return <ScreenLoader />;
 
   return (
-    <View>
+    <StandardScreen>
+      <H4>Find our ATMs closest to your current location</H4>
       <MapView
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "80%" }}
         initialRegion={location}
         showsUserLocation={true}
         followsUserLocation={true}
@@ -58,7 +60,7 @@ export function AtmFinder() {
           />
         ))}
       </MapView>
-    </View>
+    </StandardScreen>
   );
 }
 
