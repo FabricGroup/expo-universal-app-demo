@@ -9,13 +9,11 @@ export default function PayScreen() {
   const { payId, setPayId } = usePayStore();
   return (
     <StandardScreen>
-      {Platform.OS !== "web" && (
-        <Link href="/pay/qr" asChild>
-          <Button size="$4" theme="blue" style={{ textDecoration: "none" }}>
-            Scan and Pay
-          </Button>
-        </Link>
-      )}
+      <Link href="/pay/qr" asChild>
+        <Button size="$4" theme="blue" style={{ textDecoration: "none" }}>
+          Scan and Pay
+        </Button>
+      </Link>
 
       <Form>
         <XStack alignItems="center" space="$4">

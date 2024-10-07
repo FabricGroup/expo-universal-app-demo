@@ -17,7 +17,7 @@ export default function QRCodeScanner() {
     })();
   }, []);
 
-  const handleBarCodeScanned = (result: BarcodeScanningResult) => {
+  const handleBarCodeScanned = (result: Pick<BarcodeScanningResult, 'data'>) => {
     setPayId(result.data);
     router.back();
   };
@@ -36,6 +36,16 @@ export default function QRCodeScanner() {
         style={StyleSheet.absoluteFillObject}
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
+        }}
+
+        //@ts-expect-error: expo internally uses legacy cameraview for web, so need to use these props
+        barCodeScannerSettings={{
+          barCodeTypes: ["qr"],
+        }}
+
+        //@ts-expect-error: expo internally uses legacy cameraview for web, so need to use these props
+        onBarCodeScanned={(data) => {
+          handleBarCodeScanned({ data: data.nativeEvent.data });
         }}
       />
     </YStack>
