@@ -8,7 +8,7 @@ export default function PayScreen() {
   return (
     <StandardScreen minHeight="100%">
       <Link href="/pay/qr" asChild>
-        <Button size="$4" theme="blue" style={{ textDecoration: "none" }}>
+        <Button size="$4" theme="purple" style={{ textDecoration: "none" }}>
           Scan and Pay
         </Button>
       </Link>

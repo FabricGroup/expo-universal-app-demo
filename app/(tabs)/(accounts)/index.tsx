@@ -14,7 +14,7 @@ export default function AccountsHomeScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    navigation.setOptions({ headerShown: false });
+    navigation.setOptions({ headerShown: false, title: 'Accounts' });
   }, [navigation]);
 
   return (
