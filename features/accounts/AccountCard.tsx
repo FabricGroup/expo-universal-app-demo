@@ -10,8 +10,8 @@ export function AccountCard({ account, ...otherProps }: AccountCardProps) {
   return (
     <Card
       elevate
-      pressStyle={{ backgroundColor: "$purple5Light" }}
-      backgroundColor="$purple4Light"
+      pressStyle={{ backgroundColor: "$purple5" }}
+      backgroundColor="$purple4"
       {...otherProps}
     >
       <Card.Header padded fd="row" jc="space-between">

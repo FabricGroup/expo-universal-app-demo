@@ -1,47 +1,46 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import React from "react";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { useTheme } from 'tamagui';
+import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}
-      >
+    <Tabs screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         name="(accounts)"
         options={{
-          title: 'Home',
+          title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? "home" : "home-outline"}
+              color={color}
+            />
           ),
         }}
       />
       <Tabs.Screen
         name="pay"
         options={{
-          title: 'Pay',
+          title: "Pay",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'qr-code' : 'qr-code-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? "qr-code" : "qr-code-outline"}
+              color={color}
+            />
           ),
         }}
       />
       <Tabs.Screen
         name="atm-finder"
         options={{
-          title: 'ATM Finder',
+          title: "ATM Finder",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? "search" : "search-outline"}
+              color={color}
+            />
           ),
-          headerShown: true
+          headerShown: true,
         }}
       />
     </Tabs>

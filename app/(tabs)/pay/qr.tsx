@@ -1,12 +1,14 @@
 import { BarcodeScanningResult, Camera, CameraView } from "expo-camera";
 import { router } from "expo-router";
-import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { Alert, StyleSheet } from "react-native";
 import { Text, YStack } from "tamagui";
 import { usePayStore } from "../../../hooks/usePayStore";
+import { ScreenMessage } from "../../../components/ScreenMessage";
+import { ScreenLoader } from "../../../components/ScreenLoader";
 
 export default function QRCodeScanner() {
-  const { setPayId } = usePayStore();
+  const { setPaymentDetails } = usePayStore();
 
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
 
@@ -17,16 +19,24 @@ export default function QRCodeScanner() {
     })();
   }, []);
 
-  const handleBarCodeScanned = (result: BarcodeScanningResult) => {
-    setPayId(result.data);
-    router.back();
+  const handleBarCodeScanned = (
+    result: Pick<BarcodeScanningResult, "data">
+  ) => {
+    try {
+      const paymentDetails = validatePaymentDetails(JSON.parse(result.data));
+      setPaymentDetails(paymentDetails);
+      router.back();
+    } catch (e) {
+      Alert.alert("Invalid QR Code", "Please scan a valid QR code");
+      router.back();
+    }
   };
 
   if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
+    return <ScreenLoader />;
   }
   if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+    return <ScreenMessage error>No access to camera</ScreenMessage>;
   }
 
   return (
@@ -37,7 +47,36 @@ export default function QRCodeScanner() {
         barcodeScannerSettings={{
           barcodeTypes: ["qr"],
         }}
+        //@ts-expect-error: expo internally uses legacy cameraview for web, so need to use these props
+        barCodeScannerSettings={{
+          barCodeTypes: ["qr"],
+        }}
+        //@ts-expect-error: expo internally uses legacy cameraview for web, so need to use these props
+        onBarCodeScanned={(data) => {
+          handleBarCodeScanned({ data: data.nativeEvent.data });
+        }}
       />
     </YStack>
   );
+}
+
+function validatePaymentDetails(paymentDetails: any): {
+  account: string;
+  bsb: string;
+  name?: string;
+} {
+  if (
+    typeof paymentDetails.account === "string" &&
+    typeof paymentDetails.bsb === "string" &&
+    (typeof paymentDetails.name === "string" ||
+      paymentDetails.name === undefined)
+  ) {
+    return {
+      account: paymentDetails.account,
+      bsb: paymentDetails.bsb,
+      name: paymentDetails.name,
+    };
+  } else {
+    throw new Error("Invalid payment details");
+  }
 }
