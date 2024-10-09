@@ -1,23 +1,15 @@
-import { BarcodeScanningResult, Camera, CameraView } from "expo-camera";
+import { BarcodeScanningResult, CameraView, useCameraPermissions } from "expo-camera";
 import { router } from "expo-router";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Alert, StyleSheet } from "react-native";
-import { Text, YStack } from "tamagui";
-import { usePayStore } from "../../../hooks/usePayStore";
-import { ScreenMessage } from "../../../components/ScreenMessage";
+import { Button, Text, YStack } from "tamagui";
 import { ScreenLoader } from "../../../components/ScreenLoader";
+import { usePayStore } from "../../../hooks/usePayStore";
 
 export default function QRCodeScanner() {
   const { setPaymentDetails } = usePayStore();
 
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === "granted");
-    })();
-  }, []);
+  const [permission, requestPermission] = useCameraPermissions();
 
   const handleBarCodeScanned = (
     result: Pick<BarcodeScanningResult, "data">
@@ -32,16 +24,22 @@ export default function QRCodeScanner() {
     }
   };
 
-  if (hasPermission === null) {
+  if (!permission) {
     return <ScreenLoader />;
   }
-  if (hasPermission === false) {
-    return <ScreenMessage error>No access to camera</ScreenMessage>;
+  if (!permission.granted) {
+    return (
+      <YStack>
+        <Text >We need your permission to show the camera</Text>
+        <Button onPress={requestPermission} >Request permissions</Button>
+      </YStack>
+    );
   }
 
   return (
     <YStack f={1} ai="center" jc="center" bg="$background">
       <CameraView
+        facing="back"
         onBarcodeScanned={handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
         barcodeScannerSettings={{
