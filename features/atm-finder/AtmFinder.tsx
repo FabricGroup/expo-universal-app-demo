@@ -2,9 +2,9 @@ import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
 import MapView, { Marker, Region } from "react-native-maps";
 import { H4, H5, Spinner, View, YStack } from "tamagui";
-import { ScreenLoader } from "../ScreenLoader";
-import { ScreenMessage } from "../ScreenMessage";
-import { StandardScreen } from "../StandardScreen";
+import { ScreenLoader } from "../common/ScreenLoader";
+import { ScreenMessage } from "../common/ScreenMessage";
+import { StandardScreen } from "../common/StandardScreen";
 
 export function AtmFinder() {
   const [location, setLocation] = useState<Region | null>(null);

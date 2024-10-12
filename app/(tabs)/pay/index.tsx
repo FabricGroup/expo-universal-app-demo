@@ -13,7 +13,7 @@ import {
   XStack,
   YStack,
 } from "tamagui";
-import { usePayStore } from "../../../hooks/usePayStore";
+import { usePayStore } from "../../../features/pay/usePayStore";
 
 export default function PayScreen() {
   const { account, bsb, name, setName, setAccount, setBsb } = usePayStore();

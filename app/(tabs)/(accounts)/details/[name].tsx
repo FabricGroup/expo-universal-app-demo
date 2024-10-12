@@ -1,8 +1,8 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
 import { H4, ListItem, Paragraph, styled, YGroup } from "tamagui";
-import { ScreenLoader } from "../../../../components/ScreenLoader";
-import { StandardScreen } from "../../../../components/StandardScreen";
+import { ScreenLoader } from "../../../../features/common/ScreenLoader";
+import { StandardScreen } from "../../../../features/common/StandardScreen";
 import { useAccounts } from "../../../../features/accounts/useAccounts";
 import { displayDate, toDollars } from "../../../../features/utils/formats";
 

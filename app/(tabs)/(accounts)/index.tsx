@@ -1,12 +1,12 @@
 import { Link, useNavigation } from "expo-router";
 import { Button, H1, Paragraph, YStack } from "tamagui";
-import { StandardScreen } from "../../../components/StandardScreen";
+import { StandardScreen } from "../../../features/common/StandardScreen";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAccounts } from "../../../features/accounts/useAccounts";
 import { AccountCard } from "../../../features/accounts/AccountCard";
 import { router } from "expo-router";
 import { useEffect } from "react";
-import { ScreenLoader } from "../../../components/ScreenLoader";
+import { ScreenLoader } from "../../../features/common/ScreenLoader";
 
 export default function AccountsHomeScreen() {
   const insets = useSafeAreaInsets();

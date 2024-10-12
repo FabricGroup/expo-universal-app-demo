@@ -1,6 +1,6 @@
 import { Paragraph } from "tamagui";
-import { AtmFinder } from "../../components/features/AtmFinder";
-import { StandardScreen } from "../../components/StandardScreen";
+import { AtmFinder } from "../../features/atm-finder/AtmFinder";
+import { StandardScreen } from "../../features/common/StandardScreen";
 
 export default function AtmFinderScreen() {
   return (

@@ -1,7 +1,7 @@
 import { Link, Stack } from 'expo-router';
 
 import { H3, Paragraph } from 'tamagui';
-import { StandardScreen } from '../components/StandardScreen';
+import { StandardScreen } from '../features/common/StandardScreen';
 
 export default function NotFoundScreen() {
   return (
