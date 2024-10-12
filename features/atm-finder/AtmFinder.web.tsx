@@ -1,5 +1,5 @@
 import { H3, H4, View } from "tamagui";
-import { StandardScreen } from "../StandardScreen";
+import { StandardScreen } from "../common/StandardScreen";
 
 export function AtmFinder() {
   return (

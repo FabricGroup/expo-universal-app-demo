@@ -1,4 +1,3 @@
-import { useColorScheme } from "@/hooks/useColorScheme";
 import {
   DarkTheme,
   DefaultTheme,
@@ -11,6 +10,7 @@ import { useEffect, useMemo } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, useTheme } from "tamagui";
+import { useColorScheme } from "../features/utils/useColorScheme";
 import { tamaguiConfig } from "../tamagui.config";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -47,7 +47,7 @@ export default function RootLayout() {
 }
 
 /**
- * Use Tamagui theme for setting the colors of the react 
+ * Use Tamagui theme for setting the colors of the react
  * navigational elements including ios header nav elements
  */
 function NavigationThemeProvider({ children }: React.PropsWithChildren) {

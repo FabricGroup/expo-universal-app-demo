@@ -3,8 +3,8 @@ import { router } from "expo-router";
 import React from "react";
 import { Alert, StyleSheet } from "react-native";
 import { Button, Text, YStack } from "tamagui";
-import { ScreenLoader } from "../../../components/ScreenLoader";
-import { usePayStore } from "../../../hooks/usePayStore";
+import { ScreenLoader } from "../../../features/common/ScreenLoader";
+import { usePayStore } from "../../../features/pay/usePayStore";
 
 export default function QRCodeScanner() {
   const { setPaymentDetails } = usePayStore();
