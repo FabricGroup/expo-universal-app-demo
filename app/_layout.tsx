@@ -12,6 +12,7 @@ import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, useTheme } from "tamagui";
 import { tamaguiConfig } from "../tamagui.config";
+import { KeyboardAvoidingView, Platform } from "react-native";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -47,7 +48,7 @@ export default function RootLayout() {
 }
 
 /**
- * Use Tamagui theme for setting the colors of the react 
+ * Use Tamagui theme for setting the colors of the react
  * navigational elements including ios header nav elements
  */
 function NavigationThemeProvider({ children }: React.PropsWithChildren) {

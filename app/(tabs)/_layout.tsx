@@ -2,10 +2,11 @@ import { Tabs } from "expo-router";
 import React from "react";
 
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import { KeyboardAvoidingView, Platform } from "react-native";
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs screenOptions={{ headerShown: false, tabBarHideOnKeyboard: true }}>
       <Tabs.Screen
         name="(accounts)"
         options={{

@@ -41,10 +41,10 @@ export function AtmFinder() {
   if (!location) return <ScreenLoader />;
 
   return (
-    <StandardScreen>
+    <>
       <H4>Find our ATMs closest to your current location</H4>
       <MapView
-        style={{ width: "100%", height: "80%" }}
+        style={{ width: "100%", height: 500 }}
         initialRegion={location}
         showsUserLocation={true}
         followsUserLocation={true}
@@ -60,7 +60,7 @@ export function AtmFinder() {
           />
         ))}
       </MapView>
-    </StandardScreen>
+    </>
   );
 }
 

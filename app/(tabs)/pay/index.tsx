@@ -1,25 +1,23 @@
+import { QrCode } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
-import { useCallback, useState } from "react";
-import { Button, Form, H4, H5, Label, XStack, YStack, Input } from "tamagui";
+import { useState } from "react";
+import {
+  KeyboardAvoidingView,
+  Platform
+} from "react-native";
+import { Button, H4, H5, Input, Label, XStack, YStack } from "tamagui";
 import { StandardScreen } from "../../../components/StandardScreen";
 import { usePayStore } from "../../../hooks/usePayStore";
-import { QrCode } from "@tamagui/lucide-icons";
-import { KeyboardAvoidingView, Platform, TextInput } from "react-native";
 
 export default function PayScreen() {
   const { account, bsb, name, setName, setAccount, setBsb } = usePayStore();
-  const [amount, setAmount] = useState(0);
-
-  const handleAmountChange = useCallback((text: string) => {
-    const numericValue = text.replace(/[^0-9]/g, "");
-    setAmount(parseInt(numericValue) || 0);
-  }, []);
+  const [amount, setAmount] = useState("");
 
   return (
-    <StandardScreen minHeight="100%">
+    <StandardScreen>
       <H4>Pay Someone</H4>
 
-      <YStack gap="$4" px="$4">
+      <YStack gap="$3" px="$4">
         <XStack alignItems="center">
           <Label width={90} htmlFor="name">
             Name
@@ -55,7 +53,7 @@ export default function PayScreen() {
         </XStack>
       </YStack>
 
-      <XStack gap="$6" jc="center" ai="center" my="$5">
+      <XStack gap="$6" jc="center" ai="center">
         <H5>OR</H5>
       </XStack>
 
@@ -72,18 +70,25 @@ export default function PayScreen() {
         </Link>
       </XStack>
 
-      <XStack alignItems="center" mt="$8">
-        <Label width={90} htmlFor="bsb" size="$5">
-          Amount
-        </Label>
-        <Input
-          size="$5"
-          flex={1}
-          placeholder="Amount"
-          value={amount.toString()}
-          onChangeText={handleAmountChange}
-        />
-      </XStack>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "position" : "height"}
+        keyboardVerticalOffset={110}
+        style={{ flex: 1 }}
+      >
+        <XStack alignItems="center" mt="$4">
+          <Label width={90} htmlFor="bsb" size="$5">
+            Amount
+          </Label>
+          <Input
+            size="$5"
+            flex={1}
+            placeholder="Amount"
+            value={amount.toString()}
+            onChangeText={setAmount}
+            keyboardType="numeric"
+          />
+        </XStack>
+      </KeyboardAvoidingView>
     </StandardScreen>
   );
 }
