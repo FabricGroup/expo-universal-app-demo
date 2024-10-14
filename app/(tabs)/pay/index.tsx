@@ -78,7 +78,7 @@ export default function PayScreen() {
                 style={{ textDecoration: "none" }}
                 iconAfter={QrCode}
                 theme="purple"
-                backgroundColor="$purple3"
+                backgroundColor="$purple5"
               >
                 Scan to Pay
               </Button>

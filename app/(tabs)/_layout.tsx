@@ -1,8 +1,4 @@
-import {
-  CircleDollarSign,
-  MapPin,
-  Wallet
-} from "@tamagui/lucide-icons";
+import { CircleDollarSign, MapPin, Wallet } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 
@@ -20,9 +16,7 @@ export default function TabLayout() {
         name="pay"
         options={{
           title: "Pay",
-          tabBarIcon: ({ color }) => (
-            <CircleDollarSign color={color} />
-          ),
+          tabBarIcon: ({ color }) => <CircleDollarSign color={color} />,
         }}
       />
       <Tabs.Screen
@@ -30,7 +24,6 @@ export default function TabLayout() {
         options={{
           title: "ATM Finder",
           tabBarIcon: ({ color }) => <MapPin color={color} />,
-          headerShown: true,
         }}
       />
     </Tabs>
