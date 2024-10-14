@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
-import { H4, ListItem, Paragraph, styled, YGroup } from "tamagui";
+import { H4, H5, ListItem, Paragraph, styled, View, YGroup } from "tamagui";
 import { ScreenLoader } from "../../../../features/common/ScreenLoader";
 import { StandardScreen } from "../../../../features/common/StandardScreen";
 import { useAccounts } from "../../../../features/accounts/useAccounts";
@@ -42,11 +42,15 @@ export default function AccountDetailsScreen() {
                     {displayDate(transaction.date)}
                   </Paragraph>
                   <Paragraph f={1}>{transaction.description}</Paragraph>
-                  <Paragraph>{toDollars(transaction.amount)}</Paragraph>
+                  <Paragraph color={transaction.amount > 0 ? "$green11" : "$color"}>{toDollars(transaction.amount)}</Paragraph>
                 </ListItem>
               </YGroup.Item>
             ))}
           </YGroup>
+          <View ai="flex-end">
+            <H5>Closing Balance</H5>
+            <Paragraph size="$9" fontWeight="bold">{toDollars(account?.balance ?? 0)}</Paragraph>
+          </View>
         </>
       )}
     </StandardScreen>
