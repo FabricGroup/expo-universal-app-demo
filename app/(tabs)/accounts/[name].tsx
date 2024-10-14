@@ -1,10 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
 import { H4, H5, ListItem, Paragraph, styled, View, YGroup } from "tamagui";
-import { ScreenLoader } from "../../../../features/common/ScreenLoader";
-import { StandardScreen } from "../../../../features/common/StandardScreen";
-import { useAccounts } from "../../../../features/accounts/useAccounts";
-import { displayDate, toDollars } from "../../../../features/utils/formats";
+import { ScreenLoader } from "../../../features/common/ScreenLoader";
+import { StandardScreen } from "../../../features/common/StandardScreen";
+import { useAccounts } from "../../../features/accounts/useAccounts";
+import { displayDate, toDollars } from "../../../features/utils/formats";
 
 export default function AccountDetailsScreen() {
   const { name } = useLocalSearchParams<{ name: string }>();

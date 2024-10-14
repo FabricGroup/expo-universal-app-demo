@@ -4,9 +4,18 @@ import React from "react";
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs screenOptions={{ headerShown: false }} initialRouteName="accounts">
+
+      {/* Having a dummy index route, so that we have a nice /accounts/* based starting routes */}
       <Tabs.Screen
-        name="(accounts)"
+        name="index"
+        options={{
+          href: null
+        }}
+      />
+
+      <Tabs.Screen
+        name="accounts"
         options={{
           title: "Accounts",
           tabBarIcon: ({ color }) => <Wallet color={color} />,

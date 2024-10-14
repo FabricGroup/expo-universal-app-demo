@@ -1,10 +1,6 @@
 import { router, useNavigation } from "expo-router";
 import { useEffect } from "react";
-import {
-  H1,
-  H5,
-  YStack
-} from "tamagui";
+import { H1, H5, YStack } from "tamagui";
 import { AccountCard } from "../../../features/accounts/AccountCard";
 import { useAccounts } from "../../../features/accounts/useAccounts";
 import { HeroScreen } from "../../../features/common/HeroScreen";
@@ -35,7 +31,7 @@ export default function AccountsHomeScreen() {
               account={account}
               onPress={() =>
                 router.navigate({
-                  pathname: "/(accounts)/details/[name]",
+                  pathname: "/accounts/[name]",
                   params: { name: account.name },
                 })
               }
@@ -50,7 +46,9 @@ export default function AccountsHomeScreen() {
 function HomeHeader() {
   return (
     <>
-      <H1 fontWeight='bold' themeInverse>OzBank</H1>
+      <H1 fontWeight="bold" themeInverse>
+        OzBank
+      </H1>
     </>
   );
 }
