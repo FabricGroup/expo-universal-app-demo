@@ -4,13 +4,15 @@ import React from "react";
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }} initialRouteName="accounts">
-
+    <Tabs
+      screenOptions={{ headerShown: false }}
+      initialRouteName="accounts"
+    >
       {/* Having a dummy index route, so that we have a nice /accounts/* based starting routes */}
       <Tabs.Screen
         name="index"
         options={{
-          href: null
+          href: null,
         }}
       />
 

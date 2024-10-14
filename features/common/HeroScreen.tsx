@@ -22,6 +22,7 @@ export function HeroScreen({
 }
 
 const Header = styled(View, {
+  position: "relative",
   height: HEADER_HEIGHT,
   overflow: "hidden",
   justifyContent: "flex-end",

@@ -1,7 +1,7 @@
 import { QrCode } from "@tamagui/lucide-icons";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useMemo, useState } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet } from "react-native";
 import {
   Button,
   H4,
@@ -9,6 +9,7 @@ import {
   Input,
   Label,
   ScrollView,
+  styled,
   View,
   XStack,
   YStack,
@@ -30,7 +31,7 @@ export default function PayScreen() {
           <H4>Pay Someone</H4>
 
           <YStack gap="$3" px="$4">
-            <XStack alignItems="center">
+            <InputRow>
               <Label width={90} htmlFor="name">
                 Name
               </Label>
@@ -40,8 +41,8 @@ export default function PayScreen() {
                 value={name}
                 onChangeText={setName}
               />
-            </XStack>
-            <XStack alignItems="center">
+            </InputRow>
+            <InputRow>
               <Label width={90} htmlFor="account">
                 Account
               </Label>
@@ -52,8 +53,8 @@ export default function PayScreen() {
                 onChangeText={setAccount}
                 keyboardType="numeric"
               />
-            </XStack>
-            <XStack alignItems="center">
+            </InputRow>
+            <InputRow>
               <Label width={90} htmlFor="bsb">
                 BSB
               </Label>
@@ -64,25 +65,21 @@ export default function PayScreen() {
                 onChangeText={setBsb}
                 keyboardType="numeric"
               />
-            </XStack>
+            </InputRow>
           </YStack>
 
-          <XStack gap="$6" jc="center" ai="center">
-            <H5>OR</H5>
-          </XStack>
+          <H5 textAlign="center">OR</H5>
 
-          <XStack gap="$4" jc="center" ai="center">
-            <Link href="/pay/qr" asChild>
-              <Button
-                size="$5"
-                style={{ textDecoration: "none" }}
-                iconAfter={QrCode}
-                theme="purple"
-                backgroundColor="$purple5"
-              >
-                Scan to Pay
-              </Button>
-            </Link>
+          <XStack jc="center">
+            <Button
+              size="$5"
+              iconAfter={QrCode}
+              theme="purple"
+              backgroundColor="$purple5"
+              onPress={() => router.push("/pay/qr")}
+            >
+              Scan to Pay
+            </Button>
           </XStack>
 
           <KeyboardAvoidingView
@@ -90,7 +87,7 @@ export default function PayScreen() {
             keyboardVerticalOffset={110}
             style={{ flex: 1 }}
           >
-            <XStack alignItems="center" mt="$4">
+            <InputRow mt="$4">
               <Label width={90} htmlFor="bsb" size="$5">
                 Amount
               </Label>
@@ -102,14 +99,32 @@ export default function PayScreen() {
                 onChangeText={setAmount}
                 keyboardType="numeric"
               />
-            </XStack>
+            </InputRow>
           </KeyboardAvoidingView>
         </YStack>
       </ScrollView>
 
-      <Button theme="purple" size="$5" disabled={!isReadyToPay} opacity={isReadyToPay ? 1: 0.5}>
+      <Button
+        theme="purple"
+        size="$5"
+        disabled={!isReadyToPay}
+        opacity={isReadyToPay ? 1 : 0.5}
+      >
         <H5>Pay now</H5>
       </Button>
     </View>
   );
 }
+
+const InputRow = styled(XStack, {
+  alignItems: "center",
+  gap: "$2",
+});
+
+const otherStyles = StyleSheet.create({
+  buttonLink: {
+    // @ts-expect-error: this works on web, but types in react-native are not sorted. textDecorationLine throws error on web
+    textDecoration: "none",
+    textDecorationLine: "none",
+  },
+});
