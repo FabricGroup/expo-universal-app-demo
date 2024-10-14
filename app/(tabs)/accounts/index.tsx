@@ -1,10 +1,11 @@
 import { router, useNavigation } from "expo-router";
 import { useEffect } from "react";
-import { H1, H5, YStack } from "tamagui";
+import { H1, H5, styled, YStack } from "tamagui";
 import { AccountCard } from "../../../features/accounts/AccountCard";
 import { useAccounts } from "../../../features/accounts/useAccounts";
 import { HeroScreen } from "../../../features/common/HeroScreen";
 import { ScreenLoader } from "../../../features/common/ScreenLoader";
+import { Image } from "tamagui";
 
 export default function AccountsHomeScreen() {
   const { accounts, status } = useAccounts();
@@ -46,9 +47,19 @@ export default function AccountsHomeScreen() {
 function HomeHeader() {
   return (
     <>
+      <LogoBgImage source={require("@/assets/images/logo-white.png")} />
       <H1 fontWeight="bold" themeInverse>
         OzBank
       </H1>
     </>
   );
 }
+
+const LogoBgImage = styled(Image, {
+  position: 'absolute',
+  right: -110,
+  bottom: -200,
+  height: 400,
+  width: 400,
+  opacity: 0.08,
+});
