@@ -1,6 +1,6 @@
-# Welcome to your Expo app 👋
+# Welcome to OzBank: The expo demo app
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app) and [Tamagui].
 
 ## Get started
 
@@ -13,7 +13,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 2. Start the app
 
    ```bash
-    npx expo start
+    yarn start
    ```
 
 In the output, you'll find options to open the app in a
@@ -25,15 +25,12 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Source structure
+1. Application pages sit in `/app` directory. It follows the file-based routing system of Expo.
+2. Features are in `/features` directory, with folders for all main features
+3. `assets` contains all the images, fonts, and other assets used in the app
+4. `tamagui.config.ts` contains the configuration for the tamagui components
+5. `app/_layout.tsx` is the root layout.
 
 ## Learn more
 
@@ -41,10 +38,5 @@ To learn more about developing your project with Expo, look at the following res
 
 - [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
 - [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Tamagui universal components](https://tamagui.dev): A collection of universal components supporting react-native with web
+- [Zustand](https://github.com/pmndrs/zustand): A simple and fast state management for React
