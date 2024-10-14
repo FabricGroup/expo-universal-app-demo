@@ -33,7 +33,8 @@ You can start developing by editing the files inside the **app** directory. This
 5. `app/_layout.tsx` is the root layout.
 
 ## Demo features
-This app contains a QR scanner in the Pay feature, demonstrating the use of the use of `expo-camera`. A sample QR is provided in `assets/demo_qr_code.png`.
+1. This app contains a QR scanner in the Pay feature, demonstrating the use of the use of `expo-camera`. A sample QR is provided in `assets/demo_qr_code.png`.
+2. The Camera feature will not work on mobile web when accessing through localhost. Devices restrict camera permissions to secure context only and require `https://`. [Read more](https://docs.expo.dev/guides/permissions/#web)
 
 ## Learn more
 
