@@ -1,25 +1,29 @@
-import { Link, useNavigation } from "expo-router";
-import { Button, H1, Paragraph, YStack } from "tamagui";
-import { StandardScreen } from "../../../features/common/StandardScreen";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useAccounts } from "../../../features/accounts/useAccounts";
-import { AccountCard } from "../../../features/accounts/AccountCard";
-import { router } from "expo-router";
+import { router, useNavigation } from "expo-router";
 import { useEffect } from "react";
+import {
+  H1,
+  H5,
+  YStack
+} from "tamagui";
+import { AccountCard } from "../../../features/accounts/AccountCard";
+import { useAccounts } from "../../../features/accounts/useAccounts";
+import { HeroScreen } from "../../../features/common/HeroScreen";
 import { ScreenLoader } from "../../../features/common/ScreenLoader";
 
 export default function AccountsHomeScreen() {
-  const insets = useSafeAreaInsets();
   const { accounts, status } = useAccounts();
   const navigation = useNavigation();
 
   useEffect(() => {
-    navigation.setOptions({ headerShown: false, title: 'Accounts' });
+    navigation.setOptions({ headerShown: false, title: "Accounts" });
   }, [navigation]);
 
   return (
-    <StandardScreen pt={insets.top}>
-      <H1 pt="$5">Your Accounts</H1>
+    <HeroScreen
+      headerContent={<HomeHeader />}
+      headerBackgroundColor="$purple10"
+    >
+      <H5 pt="$5">Your Accounts</H5>
 
       {status === "pending" ? (
         <ScreenLoader />
@@ -39,6 +43,14 @@ export default function AccountsHomeScreen() {
           ))}
         </YStack>
       )}
-    </StandardScreen>
+    </HeroScreen>
+  );
+}
+
+function HomeHeader() {
+  return (
+    <>
+      <H1 fontWeight='bold' themeInverse>OzBank</H1>
+    </>
   );
 }
