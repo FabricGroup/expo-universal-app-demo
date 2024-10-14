@@ -1,5 +1,7 @@
 export type Account = {
   name: string;
+  type: 'checking' | 'savings' | 'credit-card';
+  id: string;
   balance: number;
   recentTransactions: Transaction[];
 }

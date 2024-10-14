@@ -4,8 +4,10 @@ import { Account } from './account.types';
 const today = new Date();
 
 export const DEMO_CHECKING_ACCOUNT: Account = {
-  name: "Checking Account",
-  balance: 1240,
+  id: 'checking-1',
+  type: 'checking',
+  name: "Checking account",
+  balance: 6310, 
   recentTransactions: [
     {
       id: 'a',
@@ -22,15 +24,53 @@ export const DEMO_CHECKING_ACCOUNT: Account = {
     {
       id: 'c',
       date: subDays(today, 4),
-      amount: 200,
+      amount: 5000,
       description: "Paycheck"
+    },
+    {
+      id: 'd',
+      date: subDays(today, 6),
+      amount: -200,
+      description: "Groceries"
+    },
+    {
+      id: 'e',
+      date: subDays(today, 8),
+      amount: -50,
+      description: "Gas"
+    },
+    {
+      id: 'f',
+      date: subDays(today, 10),
+      amount: -500,
+      description: "Transfer to Savings"
+    },
+    {
+      id: 'g',
+      date: subDays(today, 12),
+      amount: -100,
+      description: "Utilities"
+    },
+    {
+      id: 'h',
+      date: subDays(today, 14),
+      amount: -300,
+      description: "Dining Out"
+    },
+    {
+      id: 'i',
+      date: subDays(today, 16),
+      amount: -500,
+      description: "Transfer to Savings"
     }
   ]
 }
 
 export const DEMO_SAVINGS_ACCOUNT: Account = {
-  name: "Savings Account",
-  balance: 5000,
+  id: 'savings-1',
+  type: 'savings',
+  name: "Emergency savings",
+  balance: 24500,
   recentTransactions: [
     {
       id: 'x',
@@ -43,6 +83,30 @@ export const DEMO_SAVINGS_ACCOUNT: Account = {
       date: subDays(today, 5),
       amount: 1000,
       description: "Deposit"
+    },
+    {
+      id: 'z',
+      date: subDays(today, 10),
+      amount: 500,
+      description: "Transfer from Checking"
+    },
+    {
+      id: 'aa',
+      date: subDays(today, 16),
+      amount: 500,
+      description: "Transfer from Checking"
+    },
+    {
+      id: 'bb',
+      date: subDays(today, 18),
+      amount: 1000,
+      description: "Bonus"
+    },
+    {
+      id: 'cc',
+      date: subDays(today, 20),
+      amount: 200,
+      description: "Interest"
     }
   ]
 }

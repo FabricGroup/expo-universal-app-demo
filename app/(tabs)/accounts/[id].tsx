@@ -1,23 +1,23 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
-import { H4, ListItem, Paragraph, styled, YGroup } from "tamagui";
-import { ScreenLoader } from "../../../../features/common/ScreenLoader";
-import { StandardScreen } from "../../../../features/common/StandardScreen";
-import { useAccounts } from "../../../../features/accounts/useAccounts";
-import { displayDate, toDollars } from "../../../../features/utils/formats";
+import { H4, H5, ListItem, Paragraph, styled, View, YGroup } from "tamagui";
+import { ScreenLoader } from "../../../features/common/ScreenLoader";
+import { StandardScreen } from "../../../features/common/StandardScreen";
+import { useAccounts } from "../../../features/accounts/useAccounts";
+import { displayDate, toDollars } from "../../../features/utils/formats";
 
 export default function AccountDetailsScreen() {
-  const { name } = useLocalSearchParams<{ name: string }>();
+  const { id } = useLocalSearchParams<{ id: string }>();
   const { accounts: allAccounts, status } = useAccounts();
 
   const account = useMemo(
-    () => allAccounts.find((a) => a.name === name),
-    [allAccounts, name]
+    () => allAccounts.find((a) => a.id === id),
+    [allAccounts, id]
   );
 
   return (
     <StandardScreen>
-      <Stack.Screen options={{ title: name }} />
+      <Stack.Screen options={{ title: account?.name ?? '' }} />
       {status === "pending" ? (
         <ScreenLoader />
       ) : (
@@ -42,11 +42,15 @@ export default function AccountDetailsScreen() {
                     {displayDate(transaction.date)}
                   </Paragraph>
                   <Paragraph f={1}>{transaction.description}</Paragraph>
-                  <Paragraph>{toDollars(transaction.amount)}</Paragraph>
+                  <Paragraph color={transaction.amount > 0 ? "$green11" : "$color"}>{toDollars(transaction.amount)}</Paragraph>
                 </ListItem>
               </YGroup.Item>
             ))}
           </YGroup>
+          <View ai="flex-end">
+            <H5>Closing Balance</H5>
+            <Paragraph size="$8" fontWeight="bold">{toDollars(account?.balance ?? 0)}</Paragraph>
+          </View>
         </>
       )}
     </StandardScreen>

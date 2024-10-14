@@ -1,7 +1,7 @@
 import * as Location from "expo-location";
 import React, { useEffect, useState } from "react";
 import MapView, { Marker, Region } from "react-native-maps";
-import { H4, H5, Spinner, View, YStack } from "tamagui";
+import { H4, H5, Paragraph, Spinner, View, YStack } from "tamagui";
 import { ScreenLoader } from "../common/ScreenLoader";
 import { ScreenMessage } from "../common/ScreenMessage";
 import { StandardScreen } from "../common/StandardScreen";
@@ -42,7 +42,7 @@ export function AtmFinder() {
 
   return (
     <>
-      <H4>Find our ATMs closest to your current location</H4>
+      <Paragraph size="$5" textAlign="center">Showing ATMs near your location</Paragraph>
       <MapView
         style={{ width: "100%", height: 500 }}
         initialRegion={location}

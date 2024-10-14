@@ -1,46 +1,38 @@
+import { CircleDollarSign, MapPin, Wallet } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs screenOptions={{ headerShown: false }} initialRouteName="accounts">
+
+      {/* Having a dummy index route, so that we have a nice /accounts/* based starting routes */}
       <Tabs.Screen
-        name="(accounts)"
+        name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
+          href: null
+        }}
+      />
+
+      <Tabs.Screen
+        name="accounts"
+        options={{
+          title: "Accounts",
+          tabBarIcon: ({ color }) => <Wallet color={color} />,
         }}
       />
       <Tabs.Screen
         name="pay"
         options={{
           title: "Pay",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "qr-code" : "qr-code-outline"}
-              color={color}
-            />
-          ),
+          tabBarIcon: ({ color }) => <CircleDollarSign color={color} />,
         }}
       />
       <Tabs.Screen
         name="atm-finder"
         options={{
           title: "ATM Finder",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "search" : "search-outline"}
-              color={color}
-            />
-          ),
-          headerShown: true,
+          tabBarIcon: ({ color }) => <MapPin color={color} />,
         }}
       />
     </Tabs>

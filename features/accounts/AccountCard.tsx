@@ -15,7 +15,7 @@ export function AccountCard({ account, ...otherProps }: AccountCardProps) {
       {...otherProps}
     >
       <Card.Header padded fd="row" jc="space-between">
-        <H3>{account.name}</H3>
+        <H3 fontWeight='normal'>{account.name}</H3>
       </Card.Header>
       <YStack
         padding="$4"
