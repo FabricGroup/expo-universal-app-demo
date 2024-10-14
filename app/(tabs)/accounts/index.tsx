@@ -31,8 +31,8 @@ export default function AccountsHomeScreen() {
               account={account}
               onPress={() =>
                 router.navigate({
-                  pathname: "/accounts/[name]",
-                  params: { name: account.name },
+                  pathname: "/accounts/[id]",
+                  params: { id: account.id },
                 })
               }
             />

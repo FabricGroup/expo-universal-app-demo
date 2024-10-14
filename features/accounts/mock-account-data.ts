@@ -4,7 +4,9 @@ import { Account } from './account.types';
 const today = new Date();
 
 export const DEMO_CHECKING_ACCOUNT: Account = {
-  name: "Checking Account",
+  id: 'checking-1',
+  type: 'checking',
+  name: "Checking account",
   balance: 6310, 
   recentTransactions: [
     {
@@ -65,7 +67,9 @@ export const DEMO_CHECKING_ACCOUNT: Account = {
 }
 
 export const DEMO_SAVINGS_ACCOUNT: Account = {
-  name: "Savings Account",
+  id: 'savings-1',
+  type: 'savings',
+  name: "Emergency savings",
   balance: 24500,
   recentTransactions: [
     {

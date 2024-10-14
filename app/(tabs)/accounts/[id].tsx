@@ -7,17 +7,17 @@ import { useAccounts } from "../../../features/accounts/useAccounts";
 import { displayDate, toDollars } from "../../../features/utils/formats";
 
 export default function AccountDetailsScreen() {
-  const { name } = useLocalSearchParams<{ name: string }>();
+  const { id } = useLocalSearchParams<{ id: string }>();
   const { accounts: allAccounts, status } = useAccounts();
 
   const account = useMemo(
-    () => allAccounts.find((a) => a.name === name),
-    [allAccounts, name]
+    () => allAccounts.find((a) => a.id === id),
+    [allAccounts, id]
   );
 
   return (
     <StandardScreen>
-      <Stack.Screen options={{ title: name }} />
+      <Stack.Screen options={{ title: account?.name ?? '' }} />
       {status === "pending" ? (
         <ScreenLoader />
       ) : (
