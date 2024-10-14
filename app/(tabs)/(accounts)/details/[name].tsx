@@ -49,7 +49,7 @@ export default function AccountDetailsScreen() {
           </YGroup>
           <View ai="flex-end">
             <H5>Closing Balance</H5>
-            <Paragraph size="$9" fontWeight="bold">{toDollars(account?.balance ?? 0)}</Paragraph>
+            <Paragraph size="$8" fontWeight="bold">{toDollars(account?.balance ?? 0)}</Paragraph>
           </View>
         </>
       )}
