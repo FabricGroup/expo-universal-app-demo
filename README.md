@@ -32,6 +32,9 @@ You can start developing by editing the files inside the **app** directory. This
 4. `tamagui.config.ts` contains the configuration for the tamagui components
 5. `app/_layout.tsx` is the root layout.
 
+## Demo features
+This app contains a QR scanner in the Pay feature, demonstrating the use of the use of `expo-camera`. A sample QR is provided in `assets/demo_qr_code.png`.
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
